@@ -16,7 +16,7 @@ export default function Contact() {
     setLoading(true)
     try {
       const response = await axios.post(
-        'http://localhost:8000/generate_application_message/',
+        'https://jobprompt.wereon.in/generate_application_message/',
         {
           contactPoint: contactPoint,
           companyJD: companyJD,
@@ -35,7 +35,7 @@ export default function Contact() {
     setLoading(true)
     try {
       const response = await axios.post(
-        'http://localhost:8000/generate_application_message/',
+        'https://jobprompt.wereon.in/generate_dm_message/',
         {
           contactPoint: contactPoint,
           companyJD: companyJD,
