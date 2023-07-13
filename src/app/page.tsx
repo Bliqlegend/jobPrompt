@@ -3,6 +3,8 @@ import { useState } from 'react'
 import axios from 'axios'
 import Loader from './Loader'
 import { Button, Modal } from 'antd'
+import { toast } from 'react-hot-toast'
+import { Toaster } from 'react-hot-toast'
 
 export default function Contact() {
   const [selectedOption, setSelectedOption] = useState('')
@@ -72,11 +74,15 @@ export default function Contact() {
 
   const handleCloseModal = () => {
     setModalIsOpen(false)
+    setMessage('')
+    setContactPoint('')
   }
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(message)
-    console.log('Copied to clipboard')
+    await navigator.clipboard
+      .writeText(message)
+      .then(() => toast.success('Successfully copied to clipboard'))
+      .catch(() => toast.error('Failed to copy text'))
   }
 
   const handleOk = () => {
@@ -90,6 +96,7 @@ export default function Contact() {
   return (
     <>
       {loading && <Loader />}
+      <Toaster />
 
       <Modal
         open={modalIsOpen}
