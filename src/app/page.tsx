@@ -1,113 +1,189 @@
-import Image from 'next/image'
+'use client'
+import { useState } from 'react'
+import axios from 'axios'
+import Loader from './Loader'
+import { Button, Modal } from 'antd'
 
-export default function Home() {
+export default function Contact() {
+  const [selectedOption, setSelectedOption] = useState('')
+  const [companyJD, setCompanyJD] = useState('')
+  const [contactPoint, setContactPoint] = useState('')
+  const [heading, setHeading] = useState('Company JD')
+  const [loading, setLoading] = useState(false)
+  const [message, setMessage] = useState('')
+  const [modalIsOpen, setModalIsOpen] = useState(false)
+  const handleApplicationGenerate = async () => {
+    setLoading(true)
+    try {
+      const response = await axios.post(
+        'http://localhost:8000/generate_application_message/',
+        {
+          contactPoint: contactPoint,
+          companyJD: companyJD,
+        }
+      )
+      console.log(response.data[0].message)
+      setMessage(response.data[0].message)
+      handleShowModal()
+    } catch (error) {
+      console.error(error)
+    }
+    setLoading(false)
+  }
+
+  const handleDMGenerate = async () => {
+    setLoading(true)
+    try {
+      const response = await axios.post(
+        'http://localhost:8000/generate_application_message/',
+        {
+          contactPoint: contactPoint,
+          companyJD: companyJD,
+        }
+      )
+      console.log(response.data[0].message)
+      setMessage(response.data[0].message)
+      handleShowModal()
+    } catch (error) {
+      console.error(error)
+    }
+    setLoading(false)
+  }
+  const handleChange = (e) => {
+    setSelectedOption(e.target.value)
+    if (e.target.value === 'DM') {
+      setHeading('Message Posted')
+    } else {
+      setHeading('Company JD')
+    }
+  }
+
+  const handleGenerateCall = () => {
+    if (selectedOption === 'DM') {
+      handleDMGenerate()
+    } else {
+      handleApplicationGenerate()
+    }
+  }
+
+  const handleShowModal = () => {
+    setModalIsOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setModalIsOpen(false)
+  }
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(message)
+    console.log('Copied to clipboard')
+  }
+
+  const handleOk = () => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+      setModalIsOpen(false)
+    }, 3000)
+  }
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <>
+      {loading && <Loader />}
+
+      <Modal
+        open={modalIsOpen}
+        title="Generated Message"
+        onCancel={handleCloseModal}
+        footer={[
+          <Button key="back" onClick={handleCloseModal}>
+            Close
+          </Button>,
+          <Button
+            key="link"
+            type="dashed"
+            loading={loading}
+            onClick={handleCopy}
           >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+            Copy to ClipBoard
+          </Button>,
+        ]}
+      >
+        <p>{message}</p>
+      </Modal>
+
+      <div className="flex flex-col h-screen justify-center items-center bg-gray-200">
+        <div className="w-full max-w-md">
+          <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div className="mb-4">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="dropdown"
+              >
+                Select Type
+              </label>
+              <div className="inline-block relative w-64">
+                <select
+                  value={selectedOption}
+                  onChange={handleChange}
+                  className="block appearance-none w-full bg-white border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="grid-state"
+                >
+                  <option value="Application">Application</option>
+                  <option value="DM">DM</option>
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                  <svg
+                    className="fill-current h-4 w-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div className="mb-6">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="point-of-contact"
+              >
+                Point of Contact
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-12"
+                id="point-of-contact"
+                type="text"
+                placeholder="Contact Point"
+                value={contactPoint}
+                onChange={(e) => setContactPoint(e.target.value)}
+              />
+            </div>
+            <div className="mb-6">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="company-jd"
+              >
+                {heading}
+              </label>
+              <textarea
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                id="company-jd"
+                placeholder="Enter details here..."
+                value={companyJD}
+                onChange={(e) => setCompanyJD(e.target.value)}
+              ></textarea>
+            </div>
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="button"
+              onClick={handleGenerateCall}
+            >
+              Generate
+            </button>
+          </div>
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </>
   )
 }
