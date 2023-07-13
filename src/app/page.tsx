@@ -49,7 +49,7 @@ export default function Contact() {
     }
     setLoading(false)
   }
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(e.target.value)
     if (e.target.value === 'DM') {
       setHeading('Message Posted')
