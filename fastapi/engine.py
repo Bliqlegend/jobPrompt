@@ -61,7 +61,7 @@ async def generate_application_message(item: Item):
     While writing, make sure to personalize your message, demonstrating genuine familiarity with the company and the role. Be concise and confident, using strong verbs and avoiding vague phrases. Do not end your message with a typical "looking forward" statement, instead, close with a note of thanks and encourage to check the portfolio and resume for reference. Keep the message and paragraphs short (Each Paragraph max : 150-200 characters) and clear. Don’t add anything which is outside the Company Information & JD given to you and be very deeply technical, which identifies that I genuinely a thing or two about the stack.
 
     Given these guidelines, generate a job application message that effectively introduces you, establishes a connection with the company, clearly states your intention, and ends with an offer of value.
-    an example DM for you to have an example to learn from : " Dear Daniel,
+    an example DM for you to have an example to learn from : Dear Daniel,
 
 I'm Tanush Yadav, a seasoned Full Stack Developer with substantial experience across multiple stacks, including the MERN stack, Python, and Dart. My career trajectory has seen me thrive in roles ranging from internships to leading tech teams in high-growth startups such as mavex.ai.
 
@@ -72,7 +72,7 @@ The role requirements at Byte align perfectly with my skill set. My expertise in
 Thank you for considering my application. I encourage you to review my portfolio and resume for a more detailed insight into my technical expertise and professional journey.
 
 Best Regards,
-Tanush Yadav"
+Tanush Yadav
 
     To Start the Message the Company Point of Contact : {contactPoint}
 
