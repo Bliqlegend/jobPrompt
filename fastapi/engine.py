@@ -62,7 +62,7 @@ async def generate_application_message(item: Item):
 
     3. Connect your technical skills and experiences to the company's needs and role requirements. Highlight instances of significant outcomes from your ownership in past roles. If there's an area you are eager to learn, mention it.
 
-    4. End strongly by extending an offer of value and encouraging them to review your portfolio and resume. Avoid sounding desperate in your gratitude.
+    4. End strongly by extending an offer of value and encouraging them to review your portfolio and resume and also links to them as given in examples. Avoid sounding desperate in your gratitude.
 
     Your message should be concise (each paragraph: 150-200 characters), authentic, and confident, accurately reflecting your technical proficiency without exaggeration. Demonstrate genuine familiarity with the company and role, avoid vague phrases and ambiguous statements outside of your skill set. Always ensure your message paints a picture of you as technically sound, fit for their stack, their culture, and someone with a high level of ownership.
 
