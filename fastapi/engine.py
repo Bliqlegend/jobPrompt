@@ -77,7 +77,7 @@ async def generate_application_message(item: Item):
 
         The role requirements at Byte align perfectly with my skill set. My expertise in Full Stack Development, specifically in MEAN/MERN Stack, coupled with my hands-on experience with AWS and Git, equip me to deliver on the role's expectations. I also bring to the table a rich background in PostgreSQL and MySQL, thus ensuring a well-rounded approach to the development and optimization of Byte's internal tools and systems.
 
-        Thank you for considering my application. I encourage you to review my portfolio and resume for a more detailed insight into my technical expertise and professional journey.
+        Thank you for considering my application. I encourage you to review my portfolio(https://tanush.life) and resume(https://drive.google.com/file/d/1ty9bgIRbcquLq0wQzsYkz2q986tcze3X/view?usp=sharing) for a more detailed insight into my technical expertise and professional journey.
 
         Best Regards,
         Tanush Yadav
@@ -90,7 +90,7 @@ async def generate_application_message(item: Item):
 
         Given my proficiency in Linux, C, and Go, along with my extensive experience in cloud services and high-availability systems, I believe I align well with Cedana's requirements. My exposure to AI and Machine Learning, and my practice with Torch/PyTorch could further be instrumental in dealing with large-scale ML model deployment challenges.
 
-        Thank you for considering my application. I welcome you to review my portfolio and resume for more details about my professional journey.
+        Thank you for considering my application. I welcome you to review my portfolio(https://tanush.life) and resume(https://drive.google.com/file/d/1ty9bgIRbcquLq0wQzsYkz2q986tcze3X/view?usp=sharing) for more details about my professional journey.
 
         Best Regards,
         Tanush Yadav
@@ -103,10 +103,9 @@ async def generate_application_message(item: Item):
 
         My skills align seamlessly with your requirements. My proficiency in building data pipelines, web and mobile applications, and managing databases can contribute significantly to the growth of Wanderlog. I am eager to apply my knowledge to build new user-friendly interfaces, improve app performance, and develop invite and collaboration tools.
 
-        I appreciate your consideration and invite you to review my portfolio and resume for further details about my experience and skills.
+        I appreciate your consideration and invite you to review my portfolio(https://tanush.life) and resume(https://drive.google.com/file/d/1ty9bgIRbcquLq0wQzsYkz2q986tcze3X/view?usp=sharing) for further details about my experience and skills.
 
         Thank you,
-
         Tanush Yadav
 
     To Start the Message the Company Point of Contact : {contactPoint}
