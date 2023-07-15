@@ -58,9 +58,41 @@ async def generate_application_message(item: Item):
 
     1. A compelling introduction that captures immediate attention by showcasing a unique trait or achievement. Briefly encapsulate your professional journey.
 
-    2. Demonstrate your understanding and excitement for the company's mission and culture, and how the role aligns with your professional goals.
+    3. Connect your technical skills and experiences to the company's needs and role requirements by giving links of actual projects you have worked on recently on that stack for example if its MERN stack(ReactJS, NodeJS) (koinpr.com Refined the product, Consulted in the business model. Created a scalable design, Lead the tech team to develop a platform similar to CoinZilla. Managed end-to-end application deployment and provided on-call support for system robustness and stability. Used MERN stack for the same.
 
-    3. Connect your technical skills and experiences to the company's needs and role requirements. Highlight instances of significant outcomes from your ownership in past roles. If there's an area you are eager to learn, mention it.
+App has 500+ Publishers on-boarded and doing more than 20k$ MRR
+
+ AND spectral AI a podcast automation app built in chroma DB, langchain and MERN stack), if its flutter (EasyHeals
+Helped them in product conditioning and the flow, Lead the development of a medical service platform similar to Practo. Developed backend code for Dart and worked on Flutter UI with the team. Used Flutter & Dart for the same
+
+Planning to launch to live this week on Android and IOS, Good on-going support from the selected customers it is given to.
+
+ and they have atracted multiple VCs) if its AI/langchain/NLP/Stable diffusion (mavex.ai
+Helped them to move from a DialogFlow architecture to a Langchain tool based system. Created APIs for interacting with WhatsApp chatbot using OpenAI’s gpt-3.5 and FastAPI. Implemented successful server scaling solutions during high-traffic periods. Used Langchain Python and NextJS for the same
+
+Raised a pre-seed round of around 800k after MVP launch.
+
+AND spectral AI a podcast automation app built in chroma DB, langchain and MERN stack), if its Django (todayQ
+Designed and developed an auto-trading feature for a platform similar to Kite. Lead a team of 5 devs, and managed server deployment using Ansible, Terraform, and AWS. Used Django, Rust and React.js for the same
+
+Currently ongoing, But has attracted multiple VCs, due to positioning and Swiftness of the platform.
+
+AND Innovatiview
+Handled the complte developmement of Guardview for them, Crafted an exam-creation tool and a sim-tracking feature. Set up data retrieval scripts and trained an intern. Conducted security tests on TrustView, designed VueJS templates, developed REST APIs, and composed deployment workflows. Used Django, VueJS, and Python, Penetration Testing for the same.
+
+NEET exam was conducted with this, They are handling data of more than 10,000 Guards everyday with ease.
+
+AND WowSoftware
+WowSoftware is a new-end project management app for Mid-level IT services companies, replacement of Trello + Asana + Jira for them
+
+This was an in-house tool for Frshr Tech, they have migrated to this instead of paying for unlimited subs.
+
+), if Python and FastAPI (CloudDefense.AI
+Worked with them as a Cloud Security Engineer, Made the algorithm for generating secure policies for IAM users using cloudtrail logs. Used Redis, FastAPI, and Python for the same.
+
+CIEM feature currently live on CD's security dashboard, 80% reduction in policy size and extra permissions.
+
+). Highlight instances of significant outcomes from your ownership in past roles. If there's an area you are eager to learn, mention it.
 
     4. End strongly by extending an offer of value and encouraging them to review your portfolio and resume and also links to them as given in examples. Avoid sounding desperate in your gratitude.
 
