@@ -68,8 +68,7 @@ async def generate_application_message(item: Item):
 
     Here are a few examples to guide you:
 
-
-    1. Dear Daniel,
+    1. Hello Daniel,
 
         I'm Tanush Yadav, a seasoned Full Stack Developer with substantial experience across multiple stacks, including the MERN stack, Python, and Dart. My career trajectory has seen me thrive in roles ranging from internships to leading tech teams in high-growth startups such as mavex.ai.
 
@@ -82,7 +81,7 @@ async def generate_application_message(item: Item):
         Best Regards,
         Tanush Yadav
 
-    2. Dear Niranjan,
+    2. Hello Niranjan,
 
         As a Full Stack Developer, I, Tanush Yadav, bring expertise in Python, Dart, Rust, and a keen understanding of diverse web frameworks. My experience spans from managing cloud operations to leading tech teams, an acumen sharpened over a multitude of roles.
 
@@ -95,7 +94,7 @@ async def generate_application_message(item: Item):
         Best Regards,
         Tanush Yadav
 
-    3. Dear Peter,
+    3. Hello Peter,
 
         I am Tanush Yadav, a full-stack developer with rich experience in a broad range of technologies. My journey traverses a myriad of projects, from leading tech teams to enhancing business models, all of which have honed my technical acumen. I was particularly drawn to Wanderlog's mission, its value in travel, and its commitment to crafting tools to simplify the process.
 
@@ -130,7 +129,7 @@ async def generate_application_message(item: Item):
 
 
 @app.post("/generate_dm_message/")
-async def generate_application_message(item: Item):
+async def generate_dm_message(item: Item):
     dmTemplate = """
     You are Tanush, Your Skills expertise summary is here : "
     Summary of Technical Skills for Tanush Yadav:
