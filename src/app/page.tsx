@@ -13,15 +13,41 @@ export default function Contact() {
   const [heading, setHeading] = useState('Company JD')
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
+  const [jobID, setjobId] = useState('')
+  const [JobIDVisible, setJobIDVisible] = useState(false)
+  const baseURL = 'https://jobprompt.wereon.in'
+  // const baseURL = 'http://127.0.0.1:8000'
+
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const handleApplicationGenerate = async () => {
     setLoading(true)
     try {
       const response = await axios.post(
-        'https://jobprompt.wereon.in/generate_application_message/',
+        baseURL + '/generate_application_message/',
         {
           contactPoint: contactPoint,
           companyJD: companyJD,
+          jobId: '',
+        }
+      )
+      console.log(response.data[0].message)
+      setMessage(response.data[0].message)
+      handleShowModal()
+    } catch (error) {
+      console.error(error)
+    }
+    setLoading(false)
+  }
+
+  const handleReferralGenerate = async () => {
+    setLoading(true)
+    try {
+      const response = await axios.post(
+        baseURL + '/generate_referral_message/',
+        {
+          contactPoint: contactPoint,
+          companyJD: companyJD,
+          jobId: jobID,
         }
       )
       console.log(response.data[0].message)
@@ -36,13 +62,10 @@ export default function Contact() {
   const handleDMGenerate = async () => {
     setLoading(true)
     try {
-      const response = await axios.post(
-        'https://jobprompt.wereon.in/generate_dm_message/',
-        {
-          contactPoint: contactPoint,
-          companyJD: companyJD,
-        }
-      )
+      const response = await axios.post(baseURL + '/generate_dm_message/', {
+        contactPoint: contactPoint,
+        companyJD: companyJD,
+      })
       console.log(response.data[0].message)
       setMessage(response.data[0].message)
       handleShowModal()
@@ -51,18 +74,26 @@ export default function Contact() {
     }
     setLoading(false)
   }
+
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(e.target.value)
     if (e.target.value === 'DM') {
       setHeading('Message Posted')
+      setJobIDVisible(false)
+    } else if (e.target.value === 'Referral') {
+      setHeading('Company JD')
+      setJobIDVisible(true)
     } else {
       setHeading('Company JD')
+      setJobIDVisible(false)
     }
   }
 
   const handleGenerateCall = () => {
     if (selectedOption === 'DM') {
       handleDMGenerate()
+    } else if (selectedOption === 'Referral') {
+      handleReferralGenerate()
     } else {
       handleApplicationGenerate()
     }
@@ -75,6 +106,7 @@ export default function Contact() {
   const handleCloseModal = () => {
     setModalIsOpen(false)
     setMessage('')
+    setCompanyJD('')
     setContactPoint('')
   }
 
@@ -138,6 +170,7 @@ export default function Contact() {
                 >
                   <option value="Application">Application</option>
                   <option value="DM">DM</option>
+                  <option value="Referral">Referral</option>
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                   <svg
@@ -166,6 +199,25 @@ export default function Contact() {
                 onChange={(e) => setContactPoint(e.target.value)}
               />
             </div>
+            {JobIDVisible && (
+              <div className="mb-6">
+                <label
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                  htmlFor="point-of-contact"
+                >
+                  Job ID
+                </label>
+                <input
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-12"
+                  id="point-of-contact"
+                  type="text"
+                  placeholder="Job ID"
+                  value={jobID}
+                  onChange={(e) => setjobId(e.target.value)}
+                />
+              </div>
+            )}
+
             <div className="mb-6">
               <label
                 className="block text-gray-700 text-sm font-bold mb-2"
