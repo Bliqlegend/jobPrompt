@@ -200,7 +200,7 @@ async def generate_application_message(item: Item):
 
             1. Specificity and Demonstration of Value: Start with a reference to the company’s stage and/or specific needs inferred from the job description. Highlight a unique trait, accomplishment, or expertise that directly addresses these needs. Mention relevant projects you've worked on and their outcomes, avoiding hyperlinks, and sticking to concise text. Stay within your actual skill set, expressing eagerness to learn and contribute.
 
-            2. Establishing a Relationship: Frame your conclusion not as a transaction, but as the initiation of a relationship. Align your career aspirations with the company's vision and the role’s requirements. Instead of directly asking for job opportunities, express your interest in discussing how you can navigate your career while contributing to the company's growth. Urge them to explore your portfolio ({portfolioLink}) and resume ({resumeLink}), while maintaining a balance between confidence and humility.
+            2. Establishing a Relationship: Frame your conclusion not as a transaction, but as the initiation of a relationship. Align your career aspirations with the company's vision and the role’s requirements. Instead of directly asking for job opportunities, express your interest in discussing how you can navigate your career while contributing to the company's growth. Urge them to explore your portfolio ({portfolioLink}) and resume ({resumeLink}) Add links to them in brackets, while maintaining a balance between confidence and humility.
 
         This style is adaptable and should be modified based on the specific format requested in the job description.
 
